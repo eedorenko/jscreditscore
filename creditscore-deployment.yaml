@@ -21,7 +21,8 @@ spec:
     spec:
       containers:
       #- image: wcr.io/$WERCKER_APPLICATION_OWNER_NAME/$WERCKER_APPLICATION_NAME:$WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
-      - image: wcr.io/efedorenko/jscreditscore:master-95a484fee2f883563d38c89452b27f68fcabbd53
+      #- image: wcr.io/efedorenko/jscreditscore:master-95a484fee2f883563d38c89452b27f68fcabbd53
+      - image: ${{DOCKER_IMAGE}}
         imagePullPolicy: Always
         name: rest-jscreditscore-flex
         ports:
