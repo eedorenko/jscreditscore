@@ -1,0 +1,45 @@
+
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rest-jscreditscore-flex
+  namespace: efedorenko
+  labels:
+    run: rest-jscreditscore-flex
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: rest-jscreditscore-flex
+    spec:
+      containers:
+      #- image: wcr.io/$WERCKER_APPLICATION_OWNER_NAME/$WERCKER_APPLICATION_NAME:$WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+      - image: wcr.io/efedorenko/jscreditscore:master-95a484fee2f883563d38c89452b27f68fcabbd53
+        imagePullPolicy: Always
+        name: rest-jscreditscore-flex
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+      imagePullSecrets:
+      - name: wrelease
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rest-jscreditscore-svc-flex
+  namespace: efedorenko
+spec:
+  selector:
+    run: rest-jscreditscore-flex
+  ports:
+    - port: 8088
+      targetPort: 3000
+  type: ClusterIP
