@@ -11,7 +11,14 @@ push-to-releases:
     - internal/docker-push:
         tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
         cmd: node /pipeline/source/app.js
-
+       
+deploy-with-flexdeploy:
+  steps:
+    - script:
+        name: Create a snapshot
+        code: |
+              curl http://98.102.83.134:7003/flexdeploy/faces/login.jsf
+        
 deploy-to-oke:
   box:
         id: alpine
