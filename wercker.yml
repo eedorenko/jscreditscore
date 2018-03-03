@@ -18,7 +18,12 @@ deploy-with-flexdeploy:
     - script:
         name: Create a snapshot
         code: |
-              curl http://98.102.83.134:7003/flexdeploy/faces/login.jsf
+              curl -d '{"authentication": { "userId":"fdadmin", "password":"Flex@gon1" },
+          "environmentCode":"BLD",
+          "qualifiedProjectName":"/FlexDeploy/Containers/CreditScore/jscreditscore",
+          "streamName": "master",
+          "releaseName": "CreditScore Container Native"
+}' -H "Content-Type: application/json" -X POST http://98.102.83.134:7003/flexdeploy/rest/workflow/buildProject
         
 deploy-to-oke:
   box:
