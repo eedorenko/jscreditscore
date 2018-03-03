@@ -12,7 +12,6 @@ push-to-releases:
         tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
         cmd: node /pipeline/source/app.js
        
-
 deploy-with-flexdeploy:
   steps:
     - script:
