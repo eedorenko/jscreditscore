@@ -12,10 +12,12 @@ push-to-releases:
         tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
         cmd: node /pipeline/source/app.js
     
-    - script:
-        name: Push to docker hub
-        code: | 
-              docker push efedorenko/jscreditscore:$WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+    - internal/docker-push:
+          repository: eugeneflexagon
+          tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+          ports: ["80"]
+          username: eugeneflexagon
+          password: Fedorenko1
         
        
 
