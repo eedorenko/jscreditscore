@@ -17,7 +17,7 @@ push-to-releases:
           tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
           ports: 8081
           username: eugeneflexagon
-          password: Fedorenko1
+          password: Flexagon1
           registry:  https://hub.docker.com
           cmd: node /pipeline/source/app.js
         
