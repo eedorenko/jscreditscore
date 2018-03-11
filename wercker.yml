@@ -11,24 +11,7 @@ push-to-releases:
     - internal/docker-push:
         tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
         cmd: node /pipeline/source/app.js
-    
-    - internal/docker-push:
-          repository: eugeneflexagon/jscreditscore
-          tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
-          ports: 8081
-          username: eugeneflexagon
-          password: Flexagon1
-          registry:  https://hub.docker.com
-          cmd: node /pipeline/source/app.js
-        
-       
 
-deploy-with-flexdeploy:
-  steps:
-    - script:
-        name: Create a snapshot
-        code: |
-              curl -d '{"authentication": { "userId":"fdadmin", "password":"Flex@gon1" }, "environmentCode":"BLD", "qualifiedProjectName":"/FlexDeploy/Containers/CreditScore/jscreditscore", "streamName": "master", "releaseName": "CreditScore Container Native"}' -H "Content-Type: application/json" -X POST http://98.102.83.134:7003/flexdeploy/rest/workflow/buildProject
 deploy-to-oke:
   box:
         id: alpine
@@ -129,5 +112,6 @@ ui-functional-test:
               else
                 echo "UI test failed"
                 exit -1
-              fi                
+              fi           
+              
               
