@@ -29,7 +29,7 @@ deploy-with-flexdeploy:
         name: Create a snapshot
         code: |
               echo $FD_AUTH
-              curl -d '{"authentication": $FD_AUTH, "environmentCode":"BLD", "qualifiedProjectName":"/FlexDeploy/Containers/CreditScore/jscreditscore", "streamName": "master", "releaseName": "CreditScore Container Native"}' -H "Content-Type: application/json" -X POST $FD_URL/rest/workflow/buildProject
+              curl -d '{"authentication": $FD_AUTH, "environmentCode":"BLD", "qualifiedProjectName":"/FlexDeploy/Containers/CreditScore/jscreditscore", "streamName": "master", "releaseName": "CreditScore Container Native"}' -H "Content-Type: application/json" -X POST $FD_URL
 deploy-to-oke:
   box:
         id: alpine
