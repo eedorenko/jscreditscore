@@ -18,7 +18,6 @@ push-to-releases:
           ports: 8081
           username: eugeneflexagon
           password: Flexagon1
-          registry:  https://hub.docker.com
           cmd: node /pipeline/source/app.js
         
        
