@@ -13,7 +13,7 @@ push-to-releases:
         cmd: node /pipeline/source/app.js
     
     - internal/docker-push:
-          repository: eugeneflexagon/jscredit
+          repository: eugeneflexagon/jscreditscore
           tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
           ports: 8081
           username: eugeneflexagon
